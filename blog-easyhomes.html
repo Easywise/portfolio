@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>How I Built EasyHomes — A Lagos Property Platform | Easywise Studio</title>
+<meta name="description" content="The story of how I built EasyHomes, a property search platform for Lagos covering rentals, sales, and short stays across all 20 LGAs." />
+<meta property="og:title" content="How I Built EasyHomes — A Lagos Property Platform" />
+<meta property="og:description" content="Finding a home in Lagos is one of the hardest things you can do. Here's how I decided to fix it." />
+<meta property="og:image" content="https://easywise.com.ng/logo.png" />
+<meta property="og:url" content="https://easywise.com.ng/blog-easyhomes.html" />
+<link rel="icon" type="image/png" href="https://easywise.com.ng/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #1A3C34;
+    --gold: #C9A84C;
+    --gold-light: #E8C56A;
+    --off-white: #F9F7F4;
+    --text-dark: #1A1A1A;
+    --text-muted: #555;
+  }
+  body { font-family: 'Inter', sans-serif; background: #fff; color: var(--text-dark); }
+  nav {
+    background: var(--green);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; }
+  nav .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: #fff; letter-spacing: 0.1em; }
+  nav .logo span { color: var(--gold); }
+  .hero-article {
+    background: var(--green);
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+  }
+  .tag {
+    display: inline-block;
+    background: rgba(200,153,42,0.15);
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+  .hero-article h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: #fff;
+    letter-spacing: 0.04em;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+    line-height: 1.1;
+  }
+  .hero-article p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.95rem;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+  }
+  .article-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+  }
+  .article-body h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--green);
+    letter-spacing: 0.04em;
+    margin: 2.5rem 0 1rem;
+  }
+  .article-body p {
+    font-size: 0.97rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .article-body p strong { color: var(--text-dark); font-weight: 600; }
+  .article-body ul { margin: 1rem 0 1.25rem 1.5rem; }
+  .article-body ul li {
+    font-size: 0.97rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+  }
+  .callout {
+    background: var(--off-white);
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 2rem 0;
+  }
+  .callout p { margin: 0; font-style: italic; color: var(--text-dark); }
+  .article-footer {
+    background: var(--green);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .article-footer h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  .article-footer p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .cta-btn {
+    background: var(--gold);
+    color: var(--green);
+    padding: 13px 32px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://easywise.com.ng" class="logo">EASY<span>WISE</span></a>
+  <a href="https://easywise.com.ng">← Back to site</a>
+</nav>
+
+<div class="hero-article">
+  <span class="tag">Case Study · Web Development</span>
+  <h1>How I Built EasyHomes, a Lagos Property Platform</h1>
+  <p>Finding a home in Lagos is one of the hardest things you can do. Here's how I decided to fix it.</p>
+  <div class="meta">
+    <span>By Easy — Easywise Studio</span>
+    <span>·</span>
+    <span>2026</span>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <h2>The Problem</h2>
+  <p>If you've ever tried to find a house to rent in Lagos, you already know the story. You call an agent, they ask for a "inspection fee" before you've even seen the place. You find a listing online, the price is wrong, the photos are fake, or the property is already taken. You join a WhatsApp group and get flooded with messages but can't verify anything.</p>
+  <p>Lagos has millions of people looking for housing every year, and the system for finding that housing is completely broken. <strong>Agents are gatekeepers, not helpers.</strong> Landlords have no easy way to reach tenants directly. Tenants have no way to know if what they're seeing is real.</p>
+
+  <div class="callout">
+    <p>"I knew people who paid inspection fees for properties that didn't exist. I knew others who moved into apartments that looked nothing like the photos. The whole process was designed to extract money, not help people find homes."</p>
+  </div>
+
+  <h2>What I Built</h2>
+  <p>EasyHomes is a property search platform built specifically for Lagos. It covers all 20 LGAs and lets you search for rentals, properties for sale, and short stays in one place.</p>
+  <p>The key features I focused on:</p>
+  <ul>
+    <li><strong>Direct listings</strong> — landlords and verified agents post directly, no middlemen adding fees</li>
+    <li><strong>Neighbourhood search</strong> — filter by area, not just by LGA</li>
+    <li><strong>Verified listings badge</strong> — properties that have been confirmed as real and available</li>
+    <li><strong>Agent dashboard</strong> — for professional agents to manage multiple listings</li>
+    <li><strong>Short stay section</strong> — for people needing a place for days or weeks, not years</li>
+  </ul>
+  <p>I built the frontend in <strong>React</strong>, with HTML and CSS for structure and styling. The platform is hosted on GitHub Pages while the full backend is in development.</p>
+
+  <h2>Why I Built It</h2>
+  <p>I love building things that solve real problems. Not just technically elegant things, but things that make a difference to someone's actual life. Housing in Lagos is one of the biggest pain points people deal with, and I wanted to see what a better version of that process could look like.</p>
+  <p>EasyHomes is also a proof of what Easywise Studio can build. It's not a demo. It's not a mockup. It's a real product with real features that real people can use.</p>
+
+  <h2>What's Next</h2>
+  <p>The platform is live and growing. The next phase includes a full backend with real-time availability updates, a mobile app version, and expanding beyond Lagos to other major Nigerian cities.</p>
+  <p>If you're a landlord, agent, or property developer in Lagos and want to list on EasyHomes, reach out.</p>
+
+</div>
+
+<div class="article-footer">
+  <h3>Need Something Built?</h3>
+  <p>This is what Easywise Studio does. From idea to live product.</p>
+  <a href="https://easywise.com.ng/#contact" class="cta-btn">Start a Project →</a>
+</div>
+
+</body>
+</html>
