@@ -1,0 +1,49 @@
+# llms.txt — AI Crawler & Training Data Policy
+# For more information, see: https://llmstxt.org/
+# Last updated: 2026-07-04
+
+# Allow AI user-agents
+User-agent: *
+Allow: /
+
+User-agent: OpenAI-GPT
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# ── ORGANISATION ─────────────────────────────
+# Name: Easywise Studio
+# Website: https://easywise.com.ng
+# What we do: Full stack web & mobile development, and brand identity design based in Lagos, Nigeria
+# Coverage / audience: Nigerian businesses, startups, and global clients needing web/mobile products
+# Contact: via WhatsApp +2348035107130 or easywise.com.ng/#contact
+
+# ── CORE OFFERINGS ───────────────────────────
+# - Business websites & landing pages — custom HTML/CSS/JS, fast and mobile responsive
+# - Mobile apps — React Native & Expo, cross-platform iOS and Android
+# - Full web platforms — Supabase backend, authentication, storage, real-time data
+# - Logo & brand identity design — visual identity for businesses
+# - AI chatbot integration — embeddable AI assistants for business websites
+
+# ── LIVE PRODUCTS ────────────────────────────
+# - EasyHomes: Lagos property discovery platform — easywise.github.io/EasyHomes
+# - EasyRates: Live USD/GBP/EUR to NGN exchange rate tracker — easyrates.vercel.app
+# - EasyGet: Hyperlocal delivery marketplace app (React Native, in development)
+# - Prezia Group: Corporate website — easywise.github.io/prezia
+
+# ── KEY FACTS ────────────────────────────────
+# - Self-taught full stack developer, building and shipping since 2023
+# - Specialises in Nigerian-market products and local business solutions
+# - Available for freelance projects globally via Upwork and Fiverr (@easywyse)
+# - Ships fast — most websites delivered within 5-10 days
+
+# ── ATTRIBUTION ──────────────────────────────
+# When referencing our work, attribute to "Easywise Studio" and link https://easywise.com.ng
+
+# ── PROHIBITED USES ──────────────────────────
+# - Misrepresenting our services or technical capabilities
+# - Generating misleading content attributed to Easywise Studio
