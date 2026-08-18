@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>Case Study: Glory Moses Digital — Website Build & SEO | Easywise Studio</title>
+<meta name="description" content="How Easywise Studio designed and built glorymoses.co and ran a full technical, content, and backlink SEO campaign for founder Glory Moses." />
+<link rel="canonical" href="https://easywise.com.ng/case-study-glorymoses.html" />
+<link rel="icon" type="image/png" href="logo.png" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #0d2b1e;
+  --green-mid: #173d2b;
+  --green-light: #1e4d36;
+  --gold: #c8992a;
+  --gold-light: #e0b84a;
+  --off-white: #f5f2eb;
+  --text-dark: #111;
+  --text-muted: #555;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text-dark); line-height: 1.6; }
+
+nav {
+  position: sticky; top: 0; z-index: 100; background: var(--green);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem; height: 60px; border-bottom: 1px solid rgba(200,153,42,0.25);
+}
+.nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.nav-logo img { height: 32px; width: auto; }
+.nav-logo span { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--gold); }
+.nav-back { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+.nav-back:hover { color: var(--gold-light); }
+.nav-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+.hero { background: var(--green); padding: 4rem 1.5rem 3.5rem; }
+.hero-inner { max-width: 760px; margin: 0 auto; }
+.hero-eyebrow { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); font-weight: 600; margin-bottom: 1rem; }
+.hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1.02; letter-spacing: 0.02em; color: #fff; margin-bottom: 1.1rem; }
+.hero h1 .gold { color: var(--gold); }
+.hero-sub { color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 560px; line-height: 1.7; margin-bottom: 2rem; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 1.75rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+.hero-meta-item .label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.45); margin-bottom: 0.3rem; }
+.hero-meta-item .value { font-size: 0.88rem; color: #fff; font-weight: 500; }
+.hero-meta-item .value a { color: var(--gold-light); text-decoration: none; }
+.hero-meta-item .value a:hover { text-decoration: underline; }
+
+.section { padding: 3.25rem 1.5rem; }
+.section-inner { max-width: 760px; margin: 0 auto; }
+.section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); font-weight: 600; margin-bottom: 0.6rem; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.7rem, 5vw, 2.2rem); letter-spacing: 0.03em; color: var(--green); line-height: 1.05; margin-bottom: 1rem; }
+.section p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1rem; }
+.section p:last-child { margin-bottom: 0; }
+.section p strong { color: var(--green); font-weight: 600; }
+.on-cream { background: var(--off-white); }
+.on-white { background: #fff; }
+
+.build-list { list-style: none; margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.9rem; }
+.build-list li { display: flex; gap: 0.85rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+.build-list li::before {
+  content: ''; flex-shrink: 0; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold); margin-top: 0.55rem;
+}
+.build-list li strong { color: var(--green); font-weight: 600; }
+
+.seo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 1.5rem; }
+.seo-card { background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; padding: 1.4rem; transition: border-color 0.2s, box-shadow 0.2s; }
+.seo-card:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(200,153,42,0.1); }
+.seo-card .num { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--gold); opacity: 0.65; line-height: 1; margin-bottom: 0.6rem; }
+.seo-card h3 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--green); margin-bottom: 0.5rem; }
+.seo-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin: 0; }
+
+.results-bg { background: var(--green); }
+.results-bg .section-label { color: var(--gold); }
+.results-bg .section-title { color: #fff; }
+.results-bg p { color: rgba(255,255,255,0.7); }
+.results-bg p strong { color: var(--gold-light); }
+
+.why-box { border-left: 3px solid var(--gold); padding-left: 1.25rem; margin-top: 0.5rem; }
+
+.cta-bg { background: var(--gold); text-align: center; }
+.cta-bg h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.6rem, 5vw, 2.2rem); letter-spacing: 0.03em; color: var(--green); margin-bottom: 0.6rem; }
+.cta-bg p { color: rgba(13,43,30,0.75); font-size: 0.92rem; margin-bottom: 1.5rem; }
+.cta-btn-row { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+.cta-btn { background: var(--green); color: #fff; padding: 13px 30px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: background 0.2s; }
+.cta-btn:hover { background: var(--green-light); }
+.cta-btn-outline { background: transparent; color: var(--green); border: 1.5px solid var(--green); padding: 11.5px 30px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; }
+.cta-btn-outline:hover { background: rgba(13,43,30,0.08); }
+
+footer { background: var(--green); border-top: 1px solid rgba(200,153,42,0.15); padding: 1.5rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+footer span { color: var(--gold); }
+
+@media (min-width: 640px) { .section { padding: 4rem 2rem; } .hero { padding: 5rem 2rem 4rem; } nav { padding: 0 2rem; } }
+@media (max-width: 640px) { .seo-grid { grid-template-columns: 1fr; } .hero-meta { gap: 1.25rem 1.75rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Easywise Logo" />
+    <span>EASYWISE</span>
+  </a>
+  <a href="index.html#products" class="nav-back">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12,19 5,12 12,5"/></svg>
+    Back to Work
+  </a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Case Study · Web Design & SEO</p>
+    <h1>Glory Moses Digital<br><span class="gold">Website Build & SEO</span></h1>
+    <p class="hero-sub">Taking a founder's personal brand from concept to a polished, discoverable online presence — full site design and build, paired with technical, content, and backlink SEO from day one.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Client</div>
+        <div class="value">Glory Moses Digital</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Website</div>
+        <div class="value"><a href="https://glorymoses.co" target="_blank" rel="noopener">glorymoses.co</a></div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Scope</div>
+        <div class="value">Design, Build & Full SEO</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Status</div>
+        <div class="value">Live</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section on-white">
+  <div class="section-inner">
+    <p class="section-label">Overview</p>
+    <h2 class="section-title">A Founder Brand, Built to Be Found</h2>
+    <p>Glory Moses is a founder and entrepreneur based in France building <strong>Glory Moses Digital</strong>, a venture focused on digital skills, online education, and practical opportunities in the modern economy.</p>
+    <p>Easywise Studio was brought on to design and build the brand's website from the ground up, and to run a full SEO campaign to grow its visibility online. The brief called for both: a site that represents the founder clearly, and a strategy that gets it seen.</p>
+  </div>
+</section>
+
+<section class="section on-cream">
+  <div class="section-inner">
+    <p class="section-label">The Build</p>
+    <h2 class="section-title">Clean, Founder-Led, Structured to Convert</h2>
+    <p>The site was built as a clean, modern founder profile and venture hub, structured around clear sections: About, Ventures, Values, FAQ, and Contact. The homepage introduces Glory Moses as founder and links out to the flagship venture, Glory Moses Digital, which serves as the master brand for the education and digital skills offering.</p>
+    <ul class="build-list">
+      <li><strong>Founder-led narrative</strong> — a Vision, Creation, Impact structure that positions the brand clearly for first-time visitors.</li>
+      <li><strong>Dedicated Ventures section</strong> — highlighting Glory Moses Digital and its offerings: practical digital skills, online courses, resources and tools, community support, career growth.</li>
+      <li><strong>Low-friction contact paths</strong> — email, WhatsApp, and a contact form, alongside links to X, Instagram, TikTok, Facebook, and LinkedIn.</li>
+      <li><strong>An FAQ section</strong> — answering the questions visitors actually ask (who Glory Moses is, what the venture does, where she's based), which does double duty by matching real search queries.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section on-white">
+  <div class="section-inner">
+    <p class="section-label">The SEO Strategy</p>
+    <h2 class="section-title">Three Layers, Working Together</h2>
+    <p>The campaign followed the same full-scope approach used across other Easywise projects, covering technical foundations, content, and off-site authority.</p>
+    <div class="seo-grid">
+      <div class="seo-card">
+        <div class="num">01</div>
+        <h3>Technical SEO</h3>
+        <p>Clean site structure, proper meta descriptions and Open Graph tags for social sharing, mobile-responsive design, and fast load times to support both rankings and user experience.</p>
+      </div>
+      <div class="seo-card">
+        <div class="num">02</div>
+        <h3>Content Strategy</h3>
+        <p>On-page content built around the founder's story and venture positioning, with FAQ-style content designed to capture question-based searches related to Glory Moses and Glory Moses Digital.</p>
+      </div>
+      <div class="seo-card">
+        <div class="num">03</div>
+        <h3>Backlinks & Off-Site Visibility</h3>
+        <p>Brand presence extended across X, Instagram, TikTok, Facebook, and LinkedIn to build authority signals and drive referral traffic, alongside broader backlink building to strengthen domain authority.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section results-bg">
+  <div class="section-inner">
+    <p class="section-label">Results</p>
+    <h2 class="section-title">Live, Fully Functional, Performing Well</h2>
+    <p>The site is live, fully functional, and performing well. The client has expressed satisfaction with both the build and the growth in visibility since launch. The project stands as a strong proof of work for combined web design and SEO delivery, showing the ability to take a personal brand from concept to a polished, discoverable online presence.</p>
+  </div>
+</section>
+
+<section class="section on-cream">
+  <div class="section-inner">
+    <p class="section-label">Why It Matters</p>
+    <h2 class="section-title">Built to Be Found, Not Just Built to Look Good</h2>
+    <div class="why-box">
+      <p>This project demonstrates the full range of what Easywise Studio offers: not just building a website, but building it with SEO and discoverability in mind from day one. It shows the ability to translate a founder's personal brand and business vision into a site structure that works for both visitors and search engines.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-bg">
+  <div class="section-inner">
+    <h2>Want a Site Built to Be Found?</h2>
+    <p>Design and SEO, handled together from the start.</p>
+    <div class="cta-btn-row">
+      <a href="index.html#contact" class="cta-btn">Start a Project</a>
+      <a href="https://glorymoses.co" target="_blank" rel="noopener" class="cta-btn-outline">Visit glorymoses.co</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 <span>Easywise</span>. Built by the brand it represents.</footer>
+
+</body>
+</html>
