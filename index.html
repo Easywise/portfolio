@@ -347,11 +347,12 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:#7f928a
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.from(".hero-inner", {y:60, opacity:0, duration:1.2, ease:"power3.out"});
-gsap.to(".hero-inner", {
-  scale:.5, y:-140, opacity:.15,
-  scrollTrigger:{trigger:".hero",start:"top top",end:"+=850",scrub:true,pin:true}
-});
+gsap.fromTo(".hero-inner", {y:60, opacity:0}, {y:0, opacity:1, duration:1.2, ease:"power3.out"});
+gsap.fromTo(".hero-inner",
+  {scale:1, y:0, opacity:1},
+  {scale:.5, y:-140, opacity:.15,
+  scrollTrigger:{trigger:".hero",start:"top top",end:"+=850",scrub:true,pin:true}}
+);
 gsap.to(".glow", {
   scale:2.1, opacity:.15, rotation:35,
   scrollTrigger:{trigger:".hero",start:"top top",end:"+=850",scrub:true}
