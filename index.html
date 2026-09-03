@@ -31,13 +31,20 @@ h1{font-size:clamp(60px,14vw,190px);line-height:.8;margin:0;letter-spacing:-.09e
 .stat span{font-size:12px;letter-spacing:.1em;color:var(--muted)}
 
 .intro{min-height:100vh;padding:14vw 8vw;display:flex;align-items:center;background:var(--cream);color:#10241d}
-.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;width:100%;align-items:center}
+.intro-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:6vw;width:100%;align-items:center}
 .intro h2{font-size:clamp(40px,6.4vw,92px);line-height:.95;letter-spacing:-.06em;margin:0 0 30px}
 .intro em{color:#94772d;font-style:normal}
 .intro p{font-size:clamp(15px,1.4vw,19px);line-height:1.6;color:#3b4a44;max-width:520px;margin:0 0 16px}
 .kicker{color:var(--gold);font-size:12px;letter-spacing:.2em;margin-bottom:20px;text-transform:uppercase}
 .kicker.dark{color:#94772d}
-@media(max-width:900px){.intro-grid{grid-template-columns:1fr}}
+.founder-photo-wrap{position:relative;width:100%;max-width:420px}
+.founder-photo{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:24px;display:block;box-shadow:0 30px 60px -20px #10241d55}
+.founder-photo-tag{position:absolute;bottom:-18px;left:-18px;background:#10241d;color:var(--cream);padding:12px 18px;border-radius:14px;font-size:12px;letter-spacing:.03em;box-shadow:0 12px 28px -10px #10241d66}
+.founder-photo-tag b{color:var(--gold);display:block;font-size:14px;margin-bottom:2px}
+@media(max-width:900px){
+  .intro-grid{grid-template-columns:1fr;gap:10vw;display:flex;flex-direction:column}
+  .founder-photo-wrap{max-width:280px;margin:0 auto}
+}
 
 .services{min-height:70vh;padding:12vw 8vw;background:var(--bg2)}
 .services .kicker{margin-bottom:50px}
@@ -160,11 +167,13 @@ footer{padding:30px 5vw;display:flex;justify-content:space-between;color:#7f928a
 
 <section class="intro" id="about">
   <div class="intro-grid">
+    <div class="founder-photo-wrap">
+      <img class="founder-photo" src="founder.jpg" alt="Oluwaseun Gbodi, founder of Easywise Studio">
+      <div class="founder-photo-tag"><b>Oluwaseun Gbodi</b>Founder, Easywise Studio</div>
+    </div>
     <div>
       <div class="kicker dark">THE PERSON BEHIND THE WORK</div>
       <h2>I build because<br><em>I love creating.</em></h2>
-    </div>
-    <div>
       <p>I'm Easy, founder of Easywise Studio, a one person digital studio based in Lagos. I don't just write code. I build things that exist in the world, products people actually use, brands that actually work.</p>
       <p>Every project I take on gets treated like my own. I obsess over the details, the logo, the design, the development, the deployment. You get one person who sees the full picture and delivers it.</p>
       <p>I started building because I couldn't stop. That drive is what you're hiring when you work with Easywise Studio.</p>
