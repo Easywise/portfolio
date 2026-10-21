@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+<title>D King's Cut Case Study · Easywise Studio</title>
+<meta name="description" content="How Easywise Studio designed and built a bilingual booking website, WhatsApp tools and an admin app for D King's Cut, a home-visit barber in Strasbourg." />
+<link rel="canonical" href="https://easywise.com.ng/blog-dkingscut.html" />
+<link rel="icon" type="image/png" href="logo.png" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Building a Booking Website and Admin App for D King's Cut Strasbourg" />
+<meta property="og:description" content="A bilingual booking website, WhatsApp tools, an admin app and an installable phone app for a home-visit barber in Strasbourg." />
+<meta property="og:url" content="https://easywise.com.ng/blog-dkingscut.html" />
+<meta property="og:image" content="https://easywise.com.ng/dkingscut-home.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #0d2b1e;
+  --green-mid: #173d2b;
+  --green-light: #1e4d36;
+  --gold: #c8992a;
+  --gold-light: #e0b84a;
+  --off-white: #f5f2eb;
+  --text-dark: #111;
+  --text-muted: #555;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text-dark); line-height: 1.6; }
+
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem; height: 60px;
+  border-bottom: 1px solid rgba(200,153,42,0.25);
+}
+.nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.nav-logo img { height: 32px; width: auto; object-fit: contain; }
+.nav-logo span { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.12em; color: var(--gold); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--gold-light); }
+@media (max-width: 700px) { .nav-links { display: none; } }
+
+.post-hero {
+  background: var(--green);
+  padding: 4rem 1.5rem 3rem;
+}
+.post-hero-inner { max-width: 760px; margin: 0 auto; }
+.post-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); font-weight: 600; margin-bottom: 1rem; }
+.post-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.05; color: #fff; letter-spacing: 0.02em; margin-bottom: 1rem; }
+.post-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; color: rgba(255,255,255,0.55); font-size: 0.85rem; margin-top: 1.5rem; }
+.post-meta strong { color: var(--gold-light); font-weight: 600; }
+
+.post-body { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+.post-body h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 0.04em; color: var(--green); margin: 2.5rem 0 1rem; }
+.post-body p { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.1rem; }
+.post-body ul { margin: 0 0 1.1rem 1.3rem; }
+.post-body li { font-size: 1rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.post-body strong { color: var(--green); font-weight: 700; }
+
+.status-badge { display: inline-block; background: rgba(200,153,42,0.12); color: var(--gold); border: 1px solid rgba(200,153,42,0.3); padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 1.5rem; }
+
+/* Phone screenshots: scroll sideways on a phone, sit side by side on a wide screen */
+.screens { display: flex; gap: 1rem; overflow-x: auto; padding: 0.5rem 0.25rem 1.2rem; margin: 1.5rem 0 2rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.screens figure { flex: 0 0 210px; scroll-snap-align: start; }
+.screens img { display: block; width: 100%; height: auto; border-radius: 22px; border: 1px solid rgba(13,43,30,0.18); box-shadow: 0 10px 28px rgba(13,43,30,0.16); background: #0a0a0a; }
+.screens figcaption { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.6rem; text-align: center; line-height: 1.4; }
+.screens-note { font-size: 0.8rem !important; color: var(--text-muted); margin-top: -1rem; opacity: 0.8; }
+
+.post-cta {
+  background: var(--gold); padding: 3rem 1.5rem; text-align: center;
+}
+.post-cta-inner { max-width: 600px; margin: 0 auto; }
+.post-cta h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--green); letter-spacing: 0.04em; margin-bottom: 0.75rem; }
+.post-cta p { color: rgba(13,43,30,0.75); font-size: 0.92rem; margin-bottom: 1.5rem; }
+.post-cta-btn { display: inline-block; background: var(--green); color: #fff; padding: 12px 32px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-decoration: none; transition: background 0.2s; }
+.post-cta-btn:hover { background: var(--green-light); }
+
+footer { background: var(--green); border-top: 1px solid rgba(200,153,42,0.15); padding: 1.5rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+footer span { color: var(--gold); }
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+@media (min-width: 640px) {
+  nav { padding: 0 2.5rem; }
+  .post-hero { padding: 5rem 2.5rem 3.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Easywise Logo" />
+    <span>EASYWISE</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#products">Products</a>
+    <a href="index.html#blog">Blog</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="post-hero">
+  <div class="post-hero-inner">
+    <p class="post-label">Case Study · Web App and Booking System</p>
+    <h1>Building a Booking Website and Admin App for D King's Cut Strasbourg</h1>
+    <div class="post-meta">
+      <span>Client: <strong>D King's Cut Strasbourg</strong></span>
+      <span>Live at: <strong>dkingscut.com</strong></span>
+      <span>Scope: <strong>Design, full build, booking system, admin app</strong></span>
+    </div>
+    <span class="status-badge">Live</span>
+  </div>
+</section>
+
+<article class="post-body">
+  <p>D King's Cut is a home-visit barbering service in Strasbourg, France. There is no shop: the barber comes to the customer. Easywise Studio was brought on to build the brand's website and a complete booking system from scratch. It had to be something a customer could use on their phone in under a minute, and something a one-man business could run without calling a developer.</p>
+
+  <h2>The Brief</h2>
+  <p>The client came with a price list, a logo and a WhatsApp number. Everything else had to be designed. The goals were clear:</p>
+  <ul>
+    <li>Let customers book online at any hour, choose a cut, add extras such as dye or colouring, and see the total before they confirm</li>
+    <li>Only offer times he is genuinely free, around weekday evenings, full weekends, public holidays and days off</li>
+    <li>Work in French and English, since customers use both</li>
+    <li>Fit how his customers already talk to him, which is WhatsApp</li>
+    <li>Let him manage prices, hours, photos and products himself, from his phone</li>
+  </ul>
+
+  <h2>The Build</h2>
+  <p>The site is mobile first, because almost every customer will arrive from a phone. The look follows his black and gold logo, and every screen was tested at phone size before it shipped.</p>
+
+  <div class="screens">
+    <figure><img src="dkingscut-home.jpg" width="640" height="1385" loading="lazy" alt="D King's Cut home page on a phone, with the logo, headline, book button and price list" /><figcaption>Home and price list</figcaption></figure>
+    <figure><img src="dkingscut-booking.jpg" width="640" height="1385" loading="lazy" alt="The booking screen with a cut selected, an add-on ticked and a running total" /><figcaption>Choose a cut, add extras, see the total</figcaption></figure>
+    <figure><img src="dkingscut-colours.jpg" width="640" height="1385" loading="lazy" alt="A chart of 36 hair colours with one colour selected" /><figcaption>A 36 colour chart for hair colouring</figcaption></figure>
+    <figure><img src="dkingscut-french.jpg" width="640" height="1385" loading="lazy" alt="The booking confirmation screen in French with a WhatsApp button" /><figcaption>Confirmation in French, with a WhatsApp button</figcaption></figure>
+    <figure><img src="dkingscut-admin.jpg" width="640" height="1385" loading="lazy" alt="The admin app showing upcoming bookings with a starts soon highlight" /><figcaption>The admin app, shown with sample data</figcaption></figure>
+    <figure><img src="dkingscut-install.jpg" width="640" height="1385" loading="lazy" alt="A gentle banner inviting visitors to add the site to their phone" /><figcaption>Add it to your phone like an app</figcaption></figure>
+  </div>
+  <p class="screens-note">Screens shown with sample data, not real customers.</p>
+
+  <ul>
+    <li><strong>Booking in three steps.</strong> Pick a cut, add extras, choose a day and time, then enter details. A running total stays visible at the bottom of the screen, so the Continue button is always within reach.</li>
+    <li><strong>A schedule that matches real life.</strong> Opening hours differ between weekdays and weekends. French public holidays, including Alsace's regional ones, are worked out automatically, and the barber can block any day off. Longer bookings take longer slots, and double booking is not possible.</li>
+    <li><strong>A hair colour chart.</strong> When a customer picks hair colouring, a chart of 36 colours appears. They tap one, and the exact colour is saved with the booking, so there is no guessing on the day.</li>
+    <li><strong>English and French.</strong> The booking experience and every customer message switch between the two languages. The site remembers the choice, and starts in French for visitors with a French phone.</li>
+    <li><strong>WhatsApp and email.</strong> After booking, the customer taps one button to send their booking details to the barber on WhatsApp, with the message already written. From his admin, the barber can send a confirmation or a reminder in one tap, in the customer's language. Every new booking also reaches his inbox by email.</li>
+    <li><strong>An admin app of his own.</strong> He sees upcoming bookings, with the ones starting soon highlighted. He edits prices, durations, hours, days off, gallery photos, shop products and the colour chart himself. Photos uploaded from a phone are compressed automatically so the site stays fast.</li>
+    <li><strong>Installable like an app.</strong> Visitors can add the site to their home screen. A short, friendly banner explains that it is a free shortcut with nothing to download from a store. The barber gets his own separate admin icon, and the site shows a helpful page when there is no internet.</li>
+    <li><strong>Built to resist spam.</strong> A public booking form invites bots, so the schedule is protected in layers: hidden traps for scripts, signed forms, limits on how often one visitor can book, a cap on bookings per phone number, a site wide brake, and an optional Cloudflare check. Every price and time is also checked again on the server, never trusted from the browser.</li>
+  </ul>
+  <p>Under the hood the site uses Next.js and React, Tailwind CSS for the design, Supabase for the database and file storage, Netlify for hosting, and Resend for email. The result is also a progressive web app.</p>
+
+  <h2>Decisions That Mattered</h2>
+  <p><strong>Ship what works today.</strong> Sending automatic WhatsApp messages through Meta's official business platform needs account verification, which takes time. Rather than wait, the first release uses tap-to-send WhatsApp links that need no approval and work on day one. Fully automatic messages are planned as the next phase.</p>
+  <p><strong>Never trust the browser.</strong> Anyone can send a fake request to a booking form. So the server recalculates every price and re-checks every time slot before a booking is saved, whatever the page said.</p>
+  <p><strong>Design for a one-person business.</strong> The admin is made for a barber with wet hands between appointments: big buttons, a clear highlight on the next booking, and one-tap messages. Nothing in it needs a manual.</p>
+
+  <h2>Results</h2>
+  <p>The site is live and the client now has an online booking system that is open around the clock, a bilingual customer experience, and an admin he runs from his phone. As real booking figures come in, they will be added here.</p>
+
+  <h2>Why It Matters as Proof of Work</h2>
+  <p>This project shows the full range of what Easywise Studio offers, from brand led design to a working product. It takes a small service business from a flyer and a WhatsApp number to a real booking engine, customer messaging in two languages, an admin app and layered security, with the details that make it feel finished on a phone.</p>
+</article>
+
+<section class="post-cta">
+  <div class="post-cta-inner">
+    <h2>Have a Similar Project?</h2>
+    <p>Booking systems, websites for service businesses, or a full web app, I can help you design it, build it and get it live.</p>
+    <a href="index.html#contact" class="post-cta-btn">Start a Project</a>
+  </div>
+</section>
+
+<footer>© 2026 <span>Easywise</span>. Built by the brand it represents. &middot; <a href="index.html">Back to home</a></footer>
+
+</body>
+</html>
